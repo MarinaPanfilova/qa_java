@@ -8,7 +8,7 @@ import static org.junit.Assert.*;
 public class CatTest {
 
     @Test
-    public void getSoundCat() {
+    public void getSoundCatTest() {
         Feline feline = new Feline();
         Cat cat = new Cat(feline);
         String expectedSound = "Мяу";
@@ -17,7 +17,7 @@ public class CatTest {
     }
 
     @Test
-    public void getFoodCat() throws Exception {
+    public void getFoodCatTest() throws Exception {
         Feline feline = new Feline();
         Cat cat = new Cat(feline);
         List<String> expectedEatMeat = Arrays.asList("Животные", "Птицы", "Рыба");

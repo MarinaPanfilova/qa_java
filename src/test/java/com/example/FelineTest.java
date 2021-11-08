@@ -8,7 +8,7 @@ import static org.junit.Assert.*;
 public class FelineTest {
 
     @Test
-    public void getEatMeatFeline() throws Exception {
+    public void getEatMeatFelineTest() throws Exception {
         Feline feline = new Feline();
         List<String> expectedEatMeat = Arrays.asList("Животные", "Птицы", "Рыба");
         List<String> actualEatMeat = feline.getFood("Хищник");
@@ -16,7 +16,7 @@ public class FelineTest {
     }
 
     @Test
-    public void getFamilyFeline() {
+    public void getFamilyFelineTest() {
         Feline feline = new Feline();
         String expectedFamily = "Кошачьи";
         String actualFamily = feline.getFamily();
@@ -24,7 +24,7 @@ public class FelineTest {
     }
 
     @Test
-    public void getKittensCountFeline() {
+    public void getKittensCountFelineTest() {
         Feline feline = new Feline();
         int expectedCount = 1;
         int actualCount = feline.getKittens();

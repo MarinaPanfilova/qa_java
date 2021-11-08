@@ -1,5 +1,6 @@
 package com.example;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
@@ -17,13 +18,24 @@ public class LionTest {
     private Feline feline;
 
     @Test(expected = Exception.class)
-    public void lionSexHaveException() throws Exception {
+    public void lionSexHaveExceptionTest() throws Exception {
         Lion lion = new Lion(" ", feline);
         lion.doesHaveMane();
     }
 
+    @Test(expected = AssertionError.class)
+    public void exceptionMessageErrorTest() throws AssertionError {
+        try {
+            Lion lion = new Lion(" ", feline);
+            Assert.fail("Expected AssertionError");
+        }
+        catch (Exception thrown) {
+            Assert.assertNotEquals("Используйте допустимые значения пола животного - самец или самка", thrown.getMessage());
+        }
+    }
+
     @Test
-    public void isLionHaveManeTrue() throws Exception {
+    public void isLionHaveManeTruTest() throws Exception {
         Lion lion = new Lion("Самец", feline);
         boolean expectedHasMane = true;
         boolean actualHasMane = lion.doesHaveMane();
@@ -31,7 +43,7 @@ public class LionTest {
     }
 
     @Test
-    public void getLionDoNotHaveKittens() throws Exception {
+    public void getLionDoNotHaveKittensTest() throws Exception {
         Lion lion = new Lion("Самец", feline);
         int expectedGetKittens = 0;
         int actualGetKittens = lion.getKittens();
@@ -39,9 +51,9 @@ public class LionTest {
     }
 
     @Test
-    public void getLionEatMeat() throws Exception {
+    public void getLionEatMeatTest() throws Exception {
         Lion lion = new Lion("Самец", feline);
-        Mockito.when(lion.getFood()).thenReturn(Arrays.asList("Животные", "Птицы", "Рыба"));
+        Mockito.when(feline.getFood("Хищник")).thenReturn(Arrays.asList("Животные", "Птицы", "Рыба"));
         List<String> expectedEatMeat = Arrays.asList("Животные", "Птицы", "Рыба");
         List<String> actualEatMeat = lion.getFood();
         assertEquals(expectedEatMeat, actualEatMeat);
